@@ -11,7 +11,7 @@ class ShowActivities:
       'replies': {
         'uuid': '26e12864-1c26-5c3a-9658-97a10f8fea67',
         'handle':  'fantasy',
-        'message': 'heart,
+        'message': 'heart',
         'created_at': (now - timedelta(days=2)).isoformat()
       }
     }]
