@@ -3,6 +3,7 @@ import React from "react";
 import {ReactComponent as Logo} from '../components/svg/logo.svg';
 import { Link } from "react-router-dom";
 
+
 // Authenication
 import { Auth } from 'aws-amplify';
 
@@ -23,7 +24,7 @@ export default function SigninPage() {
         })
         .catch(err => { console.log('Error!', err) });
     } catch (error) {
-      if (error.code == 'UserNotConfirmedException') {
+      if (error.code === 'UserNotConfirmedException') {
         window.location.href = "/confirm"
       }
       setErrors(error.message)
