@@ -33,6 +33,12 @@ tasks:
     command: |
       cd frontend-react-js
       npm i
+  - name: aws configure
+    init: |
+      # Set AWS environment variables
+      echo "export AWS_REGION=us-east-1" >> ~/.bashrc
+      # Reload the bash configuration
+      source ~/.bashrc
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
