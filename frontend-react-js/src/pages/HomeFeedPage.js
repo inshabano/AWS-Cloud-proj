@@ -8,7 +8,7 @@ import ActivityForm from '../components/ActivityForm';
 import ReplyForm from '../components/ReplyForm';
 
 // Authenication
-import Cookies from 'js-cookie'
+import { Auth } from 'aws-amplify';
 
 export default function HomeFeedPage() {
   const [activities, setActivities] = React.useState([]);
@@ -57,6 +57,9 @@ export default function HomeFeedPage() {
 
   // check when the page loads if we are authenicated
   React.useEffect(()=>{
+    //prevents double call
+    if(dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
     loadData();
     checkAuth();
   }, [])
