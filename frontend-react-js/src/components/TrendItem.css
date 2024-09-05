@@ -1,14 +1,14 @@
 .trendings {
   display: flex;
   flex-direction: column;
-  background: #000;
+  background: #c218dc;
   border-radius: 8px;
   margin-top: 24px;
 }
 
 .trendings .trendings-title {
   font-size: 16px;
-  color: #fff;
+  color: #ebe0e0;
   padding: 16px;
   border-bottom: solid 1px rgb(31,36,49);
 }
@@ -16,7 +16,7 @@
 .trendings a {
   text-decoration: none;
   font-size: 16px;
-  color: #fff;
+  color: #340321;
   padding: 16px;
 }
 

@@ -13,11 +13,11 @@
 .activity_feed_heading {
   padding: 16px;
   padding-bottom: 48px;
-  border-bottom: solid 1px rgb(58,63,78);
+  border-bottom: solid 1px rgb(77, 51, 51);
 }
 
 .activity_feed_heading .title{
-  color: #fff;
+  color: #5947df;
   font-weight: 800;
   font-size: 20px;
 }

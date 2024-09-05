@@ -1,7 +1,7 @@
 .suggested_users {
   display: flex;
   flex-direction: column;
-  background: #000;
+  background: #ec54be;
   border-radius: 8px;
   margin-top: 24px;
 }
@@ -31,7 +31,7 @@
 }
 
 .suggested_users .avatar {
-  background: rgb(149,0,255);
+  background: rgb(233, 126, 233);
   height: 36px;
   width: 36px;
   border-radius: 999px;
