@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Install SAM CLI",
+        "type": "shell",
+        "command": "cd ${workspaceFolder} && wget https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip && unzip aws-sam-cli-linux-x86_64.zip -d sam-installation && sudo ./sam-installation/install",
+        "problemMatcher": []
+      },
+      {
+        "label": "Install CloudFormation Lint",
+        "type": "shell",
+        "command": "pip install cfn-lint",
+        "problemMatcher": []
+      },
+      {
+        "label": "Install cfn-guard",
+        "type": "shell",
+        "command": "cargo install cfn-guard",
+        "problemMatcher": []
+      },
+      {
+        "label": "Install cfn-toml",
+        "type": "shell",
+        "command": "gem install cfn-toml",
+        "problemMatcher": []
+      },
+      {
+        "label": "Install AWS CLI",
+        "type": "shell",
+        "command": "cd ${workspaceFolder} && curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip' && unzip awscliv2.zip && sudo ./aws/install",
+        "problemMatcher": []
+      },
+      {
+        "label": "Install PostgreSQL",
+        "type": "shell",
+        "command": "curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg && echo 'deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main' | sudo tee /etc/apt/sources.list.d/pgdg.list && sudo apt update && sudo apt install -y postgresql-client-13 libpq-dev",
+        "problemMatcher": []
+      },
+      {
+        "label": "Install React JS Dependencies",
+        "type": "shell",
+        "command": "cd frontend-react-js && npm install",
+        "problemMatcher": []
+      },
+      {
+        "label": "Configure AWS Region",
+        "type": "shell",
+        "command": "echo 'export AWS_REGION=us-east-1' >> ~/.bashrc && source ~/.bashrc",
+        "problemMatcher": []
+      }
+    ]
+  }
+  
