@@ -1,11 +1,10 @@
 from psycopg_pool import ConnectionPool
 import os
-from lib.db import pool
 connection_url = os.getenv("CONNECTION_URL")
 pool = ConnectionPool(connection_url)
 
 def query_wrap_object(template):
-  sql = """
+  sql = f"""
   (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
   {template}
   ) object_row);
