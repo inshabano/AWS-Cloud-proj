@@ -43,6 +43,12 @@ tasks:
       echo "export AWS_REGION=us-east-1" >> ~/.bashrc
       # Reload the bash configuration
       source ~/.bashrc
+  - name: lambda layer
+    command: |
+      psycopg2_binary-2.9.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      unzip psycopg2_binary-2.9.5-cp311-cp311-manylinux_2_17_x86_64.whl -d psycopg2_layer
+      cd psycopg2_layer
+      zip -r ../psycopg2_layer.zip .
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
