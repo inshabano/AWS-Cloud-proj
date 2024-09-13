@@ -1,7 +1,7 @@
 from psycopg_pool import ConnectionPool
 import os
-connection_url = os.getenv("CONNECTION_URL")
-pool = ConnectionPool(connection_url)
+import sys
+import re
 
 class Db:
   def __init__(self):
@@ -11,7 +11,10 @@ class Db:
     connection_url = os.getenv("CONNECTION_URL")
     self.pool = ConnectionPool(connection_url)
 
-  def query_commit(self):
+  def query_commit(self,sql,**kwargs):
+    pattern = r"\bRETURNING\b"
+    is_returning_id = re.search(pattern, sql)
+
     try:
       with self.pool.connection() as conn:
         cur =  conn.cursor()
@@ -23,7 +26,7 @@ class Db:
           return returning_id
     except Exception as err:
       self.print_sql_err(err)
-
+  
   def query_array_json(self,sql):
     print(sql+"\n")
     wrapped_sql = self.query.wrap_array(sql)
@@ -53,7 +56,7 @@ class Db:
     """
     return sql
   def query_wrap_array(self,template):
-    sql = """
+    sql = f"""
     (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
     {template}
     ) array_row);
