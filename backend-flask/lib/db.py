@@ -15,8 +15,12 @@ class Db:
     try:
       with self.pool.connection() as conn:
         cur =  conn.cursor()
-        cur.execute(sql)
+        cur.execute(sql,params)
+        if is_returning_id:
+          returning_id = cur.fetchone()[0]
         conn.commit() 
+        if is_returning_id:
+          return returning_id
     except Exception as err:
       self.print_sql_err(err)
 
