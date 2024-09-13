@@ -45,7 +45,7 @@ class CreateActivity:
     else:
       self create_activity()
       model['data'] = {
-        'uuid': uuid.uuid4(),
+        'uuid': uuid.uuid(),
         'display_name': 'Insha Bano',
         'handle':  user_handle,
         'message': message,
@@ -61,10 +61,12 @@ class CreateActivity:
       expires_at
     }
     VALUES{
-      "{user_uuid}",
-      "{message}",
-      "{expires_at}"
-    
-      
-    }
+      %s,%s,%s 
+    } RETURNING uuid
     """
+   uuid = query_commit(sql,
+     user_uuid,
+     message,
+     expires_at
+   )
+
