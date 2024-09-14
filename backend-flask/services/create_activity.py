@@ -45,14 +45,15 @@ class CreateActivity:
       object_json = CreateActivity.query_object_activity(uuid)
       model['data'] = object_json
     return model
-  def create_activity(handle,message,expires_at):
+  def create_activity(cognito_user_id, message, expires_at):
     sql = db.template('activities','create')
-    uuid = db.query_commit(sql,{
-      'handle': handle,
-      'message': message,
+    uuid = db.query_commit(sql,{ 
+      'cognito_user_id': cognito_user_id, 
+      'message': message, 
       'expires_at': expires_at
     })
-  def query_object_activity():
+    
+  def query_object_activity(uuid):
     sql = db.template('activities','object')
     return db.query_object_json(sql,{ 
       'uuid': uuid

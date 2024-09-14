@@ -1,4 +1,3 @@
-
 INSERT INTO public.activities (
     user_uuid,
     message,
