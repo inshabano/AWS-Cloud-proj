@@ -1,10 +1,10 @@
-INSERT INTO public.users (display_name, handle, cognito_user_id)
+INSERT INTO public.users (display_name, email, handle, cognito_user_id)
 VALUES
-  ('Insha Bano','Inshabano','MOCK'),
+  ('Insha Bano','inshabano88158@gmail.com','Inshabano','MOCK'),
 
-   ('Insha','Insha','MOCK'),
+   ('Insha','inshabano000000@gmail.com','Insha','MOCK'),
 
-  ('Subham','Subham','MOCK');
+  ('Subham','subhamnayak3452@gmaail.com','Subham','MOCK');
 
 INSERT INTO public.activities (user_uuid, message, expires_at)
 VALUES
