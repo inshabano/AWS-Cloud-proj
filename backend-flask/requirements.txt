@@ -19,5 +19,9 @@ Flask-AWSCognito
 
 boto3
 
+momento
+
+watchtower
+
 psycopg[binary]
 psycopg[pool]
