@@ -17,5 +17,7 @@ opentelemetry-instrumentation-requests
 
 Flask-AWSCognito
 
+boto3
+
 psycopg[binary]
 psycopg[pool]
