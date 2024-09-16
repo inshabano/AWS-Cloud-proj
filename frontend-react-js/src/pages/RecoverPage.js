@@ -2,7 +2,6 @@ import './RecoverPage.css';
 import React from "react";
 import {ReactComponent as Logo} from '../components/svg/logo.svg';
 import { Link } from "react-router-dom";
-
 import { Auth } from 'aws-amplify';
 
 export default function RecoverPage() {
@@ -22,10 +21,11 @@ export default function RecoverPage() {
     .catch((err) => setErrors(err.message) );
     return false
   }
+
   const onsubmit_confirm_code = async (event) => {
     event.preventDefault();
     setErrors('')
-    if (password == passwordAgain){
+    if (password === passwordAgain){
       Auth.forgotPasswordSubmit(username, code, password)
       .then((data) => setFormState('success'))
       .catch((err) => setErrors(err.message) );
@@ -127,13 +127,13 @@ export default function RecoverPage() {
     }
 
   let form;
-  if (formState == 'send_code') {
+  if (formState === 'send_code') {
     form = send_code()
   }
-  else if (formState == 'confirm_code') {
+  else if (formState === 'confirm_code') {
     form = confirm_code()
   }
-  else if (formState == 'success') {
+  else if (formState === 'success') {
     form = success()
   }
 
