@@ -2,10 +2,9 @@ import './SigninPage.css';
 import React from "react";
 import {ReactComponent as Logo} from '../components/svg/logo.svg';
 import { Link } from "react-router-dom";
+import FormErrors from 'components/FormErrors';
 
-
-// Authenication
-import { Auth } from 'aws-amplify';
+import { Auth } from 'aws-amplify'
 
 export default function SigninPage() {
 
@@ -15,32 +14,28 @@ export default function SigninPage() {
 
   const onsubmit = async (event) => {
     setErrors('')
-    event.preventDefault();
+    event.preventDefault(); // so that it doesn't submit the form before filling in
     try {
-      Auth.signIn(email, password)
+      Auth.signIn(email, password) 
         .then(user => {
           localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
           window.location.href = "/"
         })
-        .catch(error => { if (error.code === 'UserNotConfirmedException') {
-          window.location.href = "/confirm"
-        }
-        setErrors(error.message) });
+        .catch(err => { console.log('Error!', err) });
     } catch (error) {
+      if (error.code === 'UserNotConfirmedException') {
+        window.location.href = "/confirm"
+      }
+      setErrors(error.message)
     }
     return false
   }
-
+  
   const email_onchange = (event) => {
     setEmail(event.target.value);
   }
   const password_onchange = (event) => {
     setPassword(event.target.value);
-  }
-
-  let el_errors;
-  if (errors){
-    el_errors = <div className='errors'>{errors}</div>;
   }
 
   return (
@@ -72,7 +67,7 @@ export default function SigninPage() {
               />
             </div>
           </div>
-          {el_errors}
+          <FormErrors errors={errors} />
           <div className='submit'>
             <Link to="/forgot" className="forgot-link">Forgot Password?</Link>
             <button type='submit'>Sign In</button>

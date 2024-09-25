@@ -16,3 +16,12 @@ opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests
 
 Flask-AWSCognito
+
+boto3
+
+momento
+
+watchtower
+
+psycopg[binary]
+psycopg[pool]
